@@ -9,7 +9,7 @@ phases:
   post_build:
     commands:
       - echo "Uploading application to S3"
-      - aws s3 cp index.html s3://YOUR-BUCKET-NAME/index.html
+      - aws s3 cp index.html s3://aws-codepipeline-deploy-vivek-2026-8472/index.html
 
       - echo "Finding EC2 instance"
       - INSTANCE_ID=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=CodePipeline-Deployment-Server" "Name=instance-state-name,Values=running" --query "Reservations[0].Instances[0].InstanceId" --output text)
